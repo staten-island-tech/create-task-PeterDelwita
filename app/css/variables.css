@@ -1,0 +1,19 @@
+:root {
+    --black: #000000;
+    --dark-gray: #363636;
+    --light-gray: #a4a4a4;
+    --white: #ffffff;
+
+    --dark-blue: #164477;
+    --light-blue: #3f9fd3;
+    --dark-red: #a00e03;
+    --light-red: #df2121;
+    --dark-green: #034e00;
+    --light-green: #06b700;
+
+    --primary: var(--black);
+    --secondary: var(--dark-gray);
+    --primary-object-color: var(dark-blue);
+    --secondary-object-color: var(light-blue);
+}
+
