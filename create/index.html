@@ -8,10 +8,16 @@
   </head>
   <body>
     <div class="header-container bg-gray-900">
-      <!--Really should use Tailwind-->
       <h1 class="text-center text-[40px] text-green-500 font-bold">
         Dice Numbers Game
       </h1>
+    </div>
+    <div class="form-container bg-black flex flex-wrap justify-center p-3">
+      <form class="form">
+        <div class="input">
+          <label for="type" name="bet-threshold" required></label>
+        </div>
+      </form>
     </div>
     <div class="button-container bg-black flex flex-wrap justify-center p-3">
       <button
@@ -21,6 +27,27 @@
       </button>
       <!--Make a form for betting options: make a horizontal table where you can input the number you're betting and whether the dice roll should be above, below, or equal to that number-->
     </div>
+    <div class="dice-container bg-black flex flex-wrap justify-center p-3">
+      <div
+        class="die h-80 w-[22%] bg-black border-2 border-solid border-green-500 rounded-2xl ml-3 mr-3 flex justify-center items-center"
+      >
+        <h2 class="text-green-500 text-[150px]">?</h2>
+        <!--HTML to insert into die?-->
+      </div>
+      <div
+        class="die h-80 w-[22%] bg-black border-2 border-solid border-green-500 rounded-2xl ml-3 mr-3 flex justify-center items-center"
+      >
+        <h2 class="text-green-500 text-[150px]">?</h2>
+        <!--HTML to insert into die?-->
+      </div>
+      <div
+        class="die h-80 w-[22%] bg-black border-2 border-solid border-green-500 rounded-2xl ml-3 mr-3 flex justify-center items-center"
+      >
+        <h2 class="text-green-500 text-[150px]">?</h2>
+        <!--HTML to insert into die?-->
+      </div>
+    </div>
+    <div class="history-container bg-black flex flex-wrap justify p-3"></div>
     <script type="module" src="JS/main.js"></script>
   </body>
 </html>
