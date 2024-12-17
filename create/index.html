@@ -12,13 +12,33 @@
         Dice Numbers Game
       </h1>
     </div>
-    <div class="form-container bg-black flex flex-wrap justify-center p-3">
+
+    <!--Form-->
+
+    <div
+      class="form-container bg-black w-full flex flex-wrap justify-center p-3"
+    >
       <form class="form">
-        <div class="input">
-          <label for="type" name="bet-threshold" required></label>
+        <!--Structure like card?-->
+        <div class="input bg-black border-green-500 border-2 border-solid">
+          <label class="text-green-500 text-[20px]" for="type"
+            >Number Betted</label
+          >
+          <input
+            class="text-green-500 text-[20px]"
+            type="number"
+            name="threshold"
+            placeholder="9"
+            min="1"
+            max="18"
+            required
+          />
         </div>
       </form>
     </div>
+
+    <!--Buttons-->
+
     <div class="button-container bg-black flex flex-wrap justify-center p-3">
       <button
         class="btn bg-gray-900 hover:bg-green-500 hover:text-gray-900 m-2 text-[30px] align-text-top text-green-500"
@@ -47,6 +67,9 @@
         <!--HTML to insert into die?-->
       </div>
     </div>
+
+    <!--History-->
+
     <div class="history-container bg-black flex flex-wrap justify p-3"></div>
     <script type="module" src="JS/main.js"></script>
   </body>
