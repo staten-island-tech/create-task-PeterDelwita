@@ -14,18 +14,20 @@
     </div>
 
     <!--Form-->
-
+    <!-- To do: fix orientation of labels and inputs. Make the form look visually appealing and make a dropdown-->
     <div
       class="form-container bg-black w-full flex flex-wrap justify-center p-3"
     >
-      <form class="form">
+      <form
+        class="form bg-black border-green-500 border-2 border-solid m-6 p-6"
+      >
         <!--Structure like card?-->
-        <div class="input bg-black border-green-500 border-2 border-solid">
-          <label class="text-green-500 text-[20px]" for="type"
+        <div class="input bg-black">
+          <label class="text-green-500 text-[20px] mr-3" for="type"
             >Number Betted</label
           >
           <input
-            class="text-green-500 text-[20px]"
+            class="text-green-500 text-[20px] text-center"
             type="number"
             name="threshold"
             placeholder="9"
@@ -34,6 +36,20 @@
             required
           />
         </div>
+        <details class="dropdown-right">
+          <summary
+            class="btn m-1 text-[20px] bg-black border-2 border-solid border-green-500 text-green-500 hover:bg-green-500 hover:text-black hover:border-black"
+          >
+            Select Threshold
+          </summary>
+          <ul
+            class="menu dropdown-content rounded-box z-[1] w-52 p-2 shadow bg-black border-2 border-solid border-green-500 text-green-500"
+          >
+            <li class="text-[18px]" id="above"><a>Above</a></li>
+            <li class="text-[18px]" id="below"><a>Below</a></li>
+            <li class="text-[18px]" id="exact"><a>Exact</a></li>
+          </ul>
+        </details>
       </form>
     </div>
 
