@@ -36,32 +36,37 @@
             required
           />
         </div>
-        <details class="dropdown-right">
+        <details class="dropdown dropdown-right">
           <summary
             class="btn m-1 text-[20px] bg-black border-2 border-solid border-green-500 text-green-500 hover:bg-green-500 hover:text-black hover:border-black"
           >
             Select Threshold
           </summary>
           <ul
-            class="menu dropdown-content rounded-box z-[1] w-52 p-2 shadow bg-black border-2 border-solid border-green-500 text-green-500"
+            class="menu dropdown-content rounded-box z-[1] w-60 p-[1.5] shadow bg-black border-2 border-solid border-green-500 text-green-500 text-[30px] object-fill"
           >
-            <li class="text-[18px]" id="above"><a>Above</a></li>
-            <li class="text-[18px]" id="below"><a>Below</a></li>
-            <li class="text-[18px]" id="exact"><a>Exact</a></li>
+            <li class="p-1" id="above"><a class="text-[18px]">Above</a></li>
+            <!--Increase the size of these li objects-->
+            <li class="p-1" id="below"><a class="text-[18px]">Below</a></li>
+            <li class="p-1" id="exact"><a class="text-[18px]">Exact</a></li>
           </ul>
         </details>
+        <div>
+          <btn class="btn m-1 text-[20px] bg-black border-2 border-solid border-green-500 text-green-500 hover:bg-green-500 hover:text-black hover:border-black">Submit</btn>
+        </div>
+        
       </form>
     </div>
 
     <!--Buttons-->
 
-    <div class="button-container bg-black flex flex-wrap justify-center p-3">
+    <!-- <div class="button-container bg-black flex flex-wrap justify-center p-3">
       <button
         class="btn bg-gray-900 hover:bg-green-500 hover:text-gray-900 m-2 text-[30px] align-text-top text-green-500"
       >
-        Toggle Light/Dark Mode
+        Submit
       </button>
-      <!--Make a form for betting options: make a horizontal table where you can input the number you're betting and whether the dice roll should be above, below, or equal to that number-->
+      Make a form for betting options: make a horizontal table where you can input the number you're betting and whether the dice roll should be above, below, or equal to that number -->
     </div>
     <div class="dice-container bg-black flex flex-wrap justify-center p-3">
       <div
