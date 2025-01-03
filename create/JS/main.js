@@ -44,9 +44,18 @@ DOMSelectors.exactButton.addEventListener("click", function () {
 });
 
 function rollDice() {
-  (DOMSelectors.firstDie.innerHTML = Math.floor(Math.random() * 6)),
-    (DOMSelectors.secondDie.innerHTML = Math.floor(Math.random() * 6)),
-    (DOMSelectors.thirdDie.innerHTML = Math.floor(Math.random() * 6));
+  DOMSelectors.diceContainer.innerHTML = "";
+  for (let i = 0; i < 2; i++) {
+    let rolledNumber = Math.floor(Math.random() * 6);
+    DOMSelectors.diceContainer.insertAdjacentHTML(
+      "beforeend",
+      `<div
+        class="die h-80 w-[22%] bg-black border-2 border-solid border-green-500 rounded-2xl ml-3 mr-3 flex justify-center items-center"
+      >
+        <h2 class="text-green-500 text-[150px]">"${rolledNumber}"</h2>
+      </div>`
+    );
+  }
 }
 
 DOMSelectors.form.addEventListener("submit", function (event) {
