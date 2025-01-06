@@ -6,6 +6,7 @@
 const DOMSelectors = {
   diceContainer: document.querySelector(".dice-container"),
   thresholdButton: document.querySelector(".threshold-options"),
+  threshold: document.querySelector("#threshold"),
   firstDie: document.querySelector("#die-1"),
   secondDie: document.querySelector("#die-2"),
   thirdDie: document.querySelector("#die-3"),
@@ -15,6 +16,7 @@ const DOMSelectors = {
   aboveButton: document.querySelector("#above"),
   belowButton: document.querySelector("#below"),
   exactButton: document.querySelector("#exact"),
+  submitButton: document.querySelector("#dice-roll"),
 };
 
 const bettingHistory = [];
@@ -44,22 +46,30 @@ DOMSelectors.exactButton.addEventListener("click", function () {
 });
 
 function rollDice() {
-  DOMSelectors.diceContainer.innerHTML = "";
-  for (let i = 0; i < 2; i++) {
-    let rolledNumber = Math.floor(Math.random() * 6);
-    DOMSelectors.diceContainer.insertAdjacentHTML(
-      "beforeend",
-      `<div
+  if (DOMSelectors.threshold.value > 18 || DOMSelectors.threshold.value < 0) {
+    DOMSelectors.diceContainer.innerHTML = `<h2 class="placeholder text-green-500 text-[40px]">Please bet a reasonable number.</h2>`;
+  } else if (
+    DOMSelectors.threshold.value > 18 &&
+    DOMSelectors.thresholdButton.innerHTML.valueOf === "Above"
+  ) {
+    DOMSelectors.diceContainer.innerHTML = `<h2 class="placeholder text-green-500 text-[40px]">Bet is unwinnable.</h2>`;
+    return false;
+  } else {
+    DOMSelectors.diceContainer.innerHTML = "";
+    for (let i = 0; i <= 2; i++) {
+      let rolledNumber = Math.floor(Math.random() * 6);
+      const dieHTML = `<div
         class="die h-80 w-[22%] bg-black border-2 border-solid border-green-500 rounded-2xl ml-3 mr-3 flex justify-center items-center"
       >
-        <h2 class="text-green-500 text-[150px]">"${rolledNumber}"</h2>
-      </div>`
-    );
+        <h2 class="text-green-500 text-[150px]">${rolledNumber}</h2>
+      </div>`;
+      DOMSelectors.diceContainer.insertAdjacentHTML("beforeend", dieHTML);
+    }
   }
 }
 
-DOMSelectors.form.addEventListener("submit", function (event) {
-  event.preventDefault(), rollDice();
+DOMSelectors.submitButton.addEventListener("click", function () {
+  rollDice();
 });
 
 // // "abcfed" "cabdfed"

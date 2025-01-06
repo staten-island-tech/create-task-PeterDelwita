@@ -12,6 +12,11 @@
         Dice Numbers Game
       </h1>
     </div>
+    <div class="threshold-disclaimer bg-gray-900">
+      <h2 class="text-center text-[25px] text-green-500">
+        Threshold is set to Exact by default
+      </h2>
+    </div>
 
     <!--Form-->
     <!-- To do: fix orientation of labels and inputs. Make the form look visually appealing and make a dropdown-->
@@ -30,6 +35,7 @@
             class="text-green-500 text-[20px] text-center"
             type="number"
             name="threshold"
+            id="threshold"
             placeholder="9"
             min="1"
             max="18"
@@ -40,7 +46,7 @@
           <summary
             class="threshold-options btn m-1 text-[20px] bg-black border-2 border-solid border-green-500 text-green-500 hover:bg-green-500 hover:text-black hover:border-black"
           >
-            Select Threshold
+            Exact
           </summary>
           <ul
             class="menu dropdown-content rounded-box z-[1] w-60 p-[1.5] shadow bg-black border-2 border-solid border-green-500 text-green-500 text-[30px] object-fill"
@@ -52,7 +58,7 @@
           </ul>
         </details>
         <div>
-          <btn class="btn m-1 text-[20px] bg-black border-2 border-solid border-green-500 text-green-500 hover:bg-green-500 hover:text-black hover:border-black" id="dice-roll" data-action="submit">Roll Dice</btn>
+          <btn class="btn m-1 text-[20px] bg-black border-2 border-solid border-green-500 text-green-500 hover:bg-green-500 hover:text-black hover:border-black" id="dice-roll" data-action="submit">Roll Dice</btn> <!-- The submit button-->
         </div>
         
       </form>
