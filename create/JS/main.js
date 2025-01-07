@@ -1,7 +1,7 @@
 // Plan:
 // Roll three six-sides dice where you have to bet above, equal to, or below a number to win.
 // How to go about it: To bet, make a form-like table and allow users to input information. The game starts once the form is submitted and once the game finishes, it will show the dice numbers and the total and if the player won or lost.
-// Bettinghistory function: clear card container, use filter to select certain cards by by number, win/loss, and type of bet (maybe use a function), use forEach to add cards to the screen (bets are stored as objects)
+// Bettinghistory function: clear card container, use filter to select certain cards by number, win/loss, and type of bet (maybe use a function), use forEach to add cards to the screen (bets are stored as objects)
 
 const DOMSelectors = {
   diceContainer: document.querySelector(".dice-container"),
@@ -49,15 +49,16 @@ function rollDice() {
   if (DOMSelectors.threshold.value > 18 || DOMSelectors.threshold.value < 0) {
     DOMSelectors.diceContainer.innerHTML = `<h2 class="placeholder text-green-500 text-[40px]">Please bet a reasonable number.</h2>`;
   } else if (
-    DOMSelectors.threshold.value > 18 &&
-    DOMSelectors.thresholdButton.innerHTML.valueOf === "Above"
+    DOMSelectors.threshold.value === 18 &&
+    DOMSelectors.thresholdButton.innerHTML === "Above"
   ) {
     DOMSelectors.diceContainer.innerHTML = `<h2 class="placeholder text-green-500 text-[40px]">Bet is unwinnable.</h2>`;
-    return false;
   } else {
     DOMSelectors.diceContainer.innerHTML = "";
+    let total = 0;
     for (let i = 0; i <= 2; i++) {
       let rolledNumber = Math.floor(Math.random() * 6);
+      total = total += rolledNumber;
       const dieHTML = `<div
         class="die h-80 w-[22%] bg-black border-2 border-solid border-green-500 rounded-2xl ml-3 mr-3 flex justify-center items-center"
       >
@@ -65,6 +66,15 @@ function rollDice() {
       </div>`;
       DOMSelectors.diceContainer.insertAdjacentHTML("beforeend", dieHTML);
     }
+    DOMSelectors.diceContainer.insertAdjacentHTML(
+      "beforeend",
+      `<div
+        class="h-80 w-[22%] bg-black flex justify-center items-center"
+      >
+      <h2 class="text-green-500 text-[25px]">Total: ${total}</h2>
+      </div>`
+    );
+    console.log(total);
   }
 }
 
