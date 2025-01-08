@@ -50,7 +50,7 @@ function rollDice() {
     DOMSelectors.diceContainer.innerHTML = `<h2 class="placeholder text-green-500 text-[40px]">Please bet a reasonable number.</h2>`;
   } else if (
     DOMSelectors.threshold.value === 18 &&
-    DOMSelectors.thresholdButton.innerHTML === "Above"
+    DOMSelectors.thresholdButton.innerHTML.includes("Above")
   ) {
     DOMSelectors.diceContainer.innerHTML = `<h2 class="placeholder text-green-500 text-[40px]">Bet is unwinnable.</h2>`;
   } else {
@@ -69,12 +69,22 @@ function rollDice() {
     DOMSelectors.diceContainer.insertAdjacentHTML(
       "beforeend",
       `<div
-        class="h-80 w-[22%] bg-black flex justify-center items-center"
+        class="h-20 w-full bg-black flex justify-center items-center"
       >
       <h2 class="text-green-500 text-[25px]">Total: ${total}</h2>
       </div>`
     );
     console.log(total);
+    if (
+      (total > DOMSelectors.threshold.value &&
+        DOMSelectors.thresholdButton.innerHTML === "Above") ||
+      (total === DOMSelectors.threshold.value &&
+        DOMSelectors.thresholdButton.innerHTML === "Exact") ||
+      (total < DOMSelectors.threshold.value &&
+        DOMSelectors.thresholdButton.innerHTML === "Below")
+    ) {
+      console.log("you win");
+    }
   }
 }
 
