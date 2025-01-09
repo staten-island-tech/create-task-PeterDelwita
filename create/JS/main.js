@@ -49,10 +49,14 @@ function rollDice() {
   if (DOMSelectors.threshold.value > 18 || DOMSelectors.threshold.value < 0) {
     DOMSelectors.diceContainer.innerHTML = `<h2 class="placeholder text-green-500 text-[40px]">Please bet a reasonable number.</h2>`;
   } else if (
-    DOMSelectors.threshold.value === 18 &&
-    DOMSelectors.thresholdButton.innerHTML.includes("Above")
+    (DOMSelectors.threshold.value === 18 &&
+      DOMSelectors.thresholdButton.innerHTML === "Above") ||
+    (DOMSelectors.threshold.value === 0 &&
+      DOMSelectors.thresholdButton.innerHTML === "Below")
   ) {
     DOMSelectors.diceContainer.innerHTML = `<h2 class="placeholder text-green-500 text-[40px]">Bet is unwinnable.</h2>`;
+  } else if (DOMSelectors.threshold.value === "") {
+    DOMSelectors.diceContainer.innerHTML = `<h2 class="placeholder text-green-500 text-[40px]">Please type a number.</h2>`;
   } else {
     DOMSelectors.diceContainer.innerHTML = "";
     let total = 0;
