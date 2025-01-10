@@ -7,9 +7,6 @@ const DOMSelectors = {
   diceContainer: document.querySelector(".dice-container"),
   thresholdButton: document.querySelector(".threshold-options"),
   threshold: document.querySelector("#threshold"),
-  firstDie: document.querySelector("#die-1"),
-  secondDie: document.querySelector("#die-2"),
-  thirdDie: document.querySelector("#die-3"),
   form: document.querySelector("form"),
   historyContainer: document.querySelector(".history-container"),
   btn: document.querySelectorAll(".btn"),
@@ -49,9 +46,9 @@ function rollDice() {
   if (DOMSelectors.threshold.value > 18 || DOMSelectors.threshold.value < 0) {
     DOMSelectors.diceContainer.innerHTML = `<h2 class="placeholder text-green-500 text-[40px]">Please bet a reasonable number.</h2>`;
   } else if (
-    (DOMSelectors.threshold.value === 18 &&
+    (DOMSelectors.threshold.value === "18" &&
       DOMSelectors.thresholdButton.innerHTML === "Above") ||
-    (DOMSelectors.threshold.value === 0 &&
+    (DOMSelectors.threshold.value === "0" &&
       DOMSelectors.thresholdButton.innerHTML === "Below")
   ) {
     DOMSelectors.diceContainer.innerHTML = `<h2 class="placeholder text-green-500 text-[40px]">Bet is unwinnable.</h2>`;
@@ -61,7 +58,7 @@ function rollDice() {
     DOMSelectors.diceContainer.innerHTML = "";
     let total = 0;
     for (let i = 0; i <= 2; i++) {
-      let rolledNumber = Math.floor(Math.random() * 6);
+      let rolledNumber = Math.floor(Math.random() * 7);
       total = total += rolledNumber;
       const dieHTML = `<div
         class="die h-80 w-[22%] bg-black border-2 border-solid border-green-500 rounded-2xl ml-3 mr-3 flex justify-center items-center"
@@ -78,7 +75,9 @@ function rollDice() {
       <h2 class="text-green-500 text-[25px]">Total: ${total}</h2>
       </div>`
     );
+
     console.log(total);
+    let outcome = "loss";
     if (
       (total > DOMSelectors.threshold.value &&
         DOMSelectors.thresholdButton.innerHTML === "Above") ||
@@ -88,7 +87,17 @@ function rollDice() {
         DOMSelectors.thresholdButton.innerHTML === "Below")
     ) {
       console.log("you win");
+      outcome = "win";
+    } else {
+      console.log("you lose");
+      outcome = "loss";
     }
+    const bet = {
+      bettedNumber: DOMSelectors.threshold.value,
+      betType: DOMSelectors.thresholdButton.innerHTML,
+      betOutcome: outcome,
+    };
+    bettingHistory.push(bet);
   }
 }
 
