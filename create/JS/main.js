@@ -46,6 +46,12 @@ function rollDice() {
   if (DOMSelectors.threshold.value > 18 || DOMSelectors.threshold.value < 0) {
     DOMSelectors.diceContainer.innerHTML = `<h2 class="placeholder text-green-500 text-[40px]">Please bet a reasonable number.</h2>`;
   } else if (
+    DOMSelectors.thresholdButton.innerHTML != "Above" &&
+    DOMSelectors.thresholdButton.innerHTML != "Below" &&
+    DOMSelectors.thresholdButton.innerHTML != "Exact"
+  ) {
+    DOMSelectors.diceContainer.innerHTML = `<h2 class="placeholder text-green-500 text-[40px]">Select bet type.</h2>`;
+  } else if (
     (DOMSelectors.threshold.value === "18" &&
       DOMSelectors.thresholdButton.innerHTML === "Above") ||
     (DOMSelectors.threshold.value === "0" &&
@@ -79,11 +85,11 @@ function rollDice() {
     console.log(total);
     let outcome = "loss";
     if (
-      (total > DOMSelectors.threshold.value &&
+      (total > parseInt(DOMSelectors.threshold.value) &&
         DOMSelectors.thresholdButton.innerHTML === "Above") ||
-      (total === DOMSelectors.threshold.value &&
+      (total === parseInt(DOMSelectors.threshold.value) &&
         DOMSelectors.thresholdButton.innerHTML === "Exact") ||
-      (total < DOMSelectors.threshold.value &&
+      (total < parseInt(DOMSelectors.threshold.value) &&
         DOMSelectors.thresholdButton.innerHTML === "Below")
     ) {
       console.log("you win");
@@ -94,15 +100,32 @@ function rollDice() {
     }
     const bet = {
       bettedNumber: DOMSelectors.threshold.value,
-      betType: DOMSelectors.thresholdButton.innerHTML,
+      betType: DOMSelectors.thresholdButton.innerHTML.trim(),
+      betTotal: total,
       betOutcome: outcome,
     };
     bettingHistory.push(bet);
+    console.log(bet);
   }
 }
 
+function loadHistory() {
+  DOMSelectors.historyContainer.innerHTML = "";
+  bettingHistory.forEach((bet) => {
+    const cardHTML = `<div
+        class="card h-80 w-[22%] bg-black border-2 border-solid border-green-500 rounded-2xl m-2 flex justify-center items-center" id="die-1"
+      >
+        <h2 class="text-green-500 text-[30px]">Number Betted: ${bet.bettedNumber}</h2>
+        <h2 class="text-green-500 text-[30px]">Type of Bet: ${bet.betType}</h2>
+        <h2 class="text-green-500 text-[30px]">Total: ${bet.betTotal}</h2>
+        <h2 class="text-green-500 text-[30px]">Outcome: ${bet.betOutcome}</h2>
+      </div>`;
+    DOMSelectors.historyContainer.insertAdjacentHTML("beforeend", cardHTML);
+  });
+}
+
 DOMSelectors.submitButton.addEventListener("click", function () {
-  rollDice();
+  rollDice(), loadHistory();
 });
 
 // // "abcfed" "cabdfed"
