@@ -11,8 +11,6 @@ const DOMSelectors = {
   submitButton: document.querySelector("#dice-roll"),
 };
 
-const bettingHistory = [];
-
 function filterAbove() {
   DOMSelectors.thresholdButton.innerHTML = "Above";
 }
@@ -102,6 +100,8 @@ function rollDice(betNumber) {
     console.log(bet);
   }
 }
+
+const bettingHistory = [];
 
 function loadHistory() {
   DOMSelectors.historyContainer.innerHTML = "";
